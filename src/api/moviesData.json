@@ -1,0 +1,73 @@
+[
+    {
+      "name": "Lovely Runner",
+      "id": "lovely-runner",
+      "img_url": "/images/lr.webp",
+      "genre": ["Drama"],
+      "watch_url": "https://www.viki.com/tv/40466c-lovely-runner"
+    },
+    {
+      "name": "Stranger Things",
+      "id": "stranger-things",
+      "img_url": "/images/st.jpg",
+      "genre": ["Drama", "Fantasy", "Horror"],
+      "watch_url": "https://www.netflix.com/title/80057281"
+    },
+    {
+      "name": "The Witcher",
+      "id": "the-witcher",
+      "img_url": "/images/tw.webp",
+      "genre": ["Action"],
+      "watch_url": "https://www.netflix.com/title/80189685"
+    },
+    {
+      "name": "Money Heist",
+      "id": "money-heist",
+      "img_url": "/images/mh.jpg",
+      "genre": ["Action"],
+      "watch_url": "https://www.netflix.com/title/80192098"
+    },
+    {
+      "name": "The Crown",
+      "id": "the-crown",
+      "img_url": "/images/tc.webp",
+      "genre": ["Drama"],
+      "watch_url": "https://www.netflix.com/title/80025678"
+    },
+    {
+      "name": "Squid Game",
+      "id": "squid-game",
+      "img_url": "/images/sg.webp",
+      "genre": ["Action"],
+      "watch_url": "https://www.netflix.com/title/81040344"
+    },
+    {
+        "name": "Queen of Tears",
+        "id": "queen-of-tears",
+        "img_url": "/images/qot.jpg",
+        "genre": ["Drama", "Romance"],
+        "watch_url": "https://www.viki.com/tv/23456789c-queen-of-tears"
+    },
+    {
+        "name": "Lovely Runner",
+        "id": "lovely-runner",
+        "img_url": "/images/lr.webp",
+        "genre": ["Drama"],
+        "watch_url": "https://www.viki.com/tv/40466c-lovely-runner"
+    },
+    {
+        "name": "The Electric State",
+        "id": "the-electric-state",
+        "img_url": "/images/netflix1.jpg",
+        "genre": ["Action", "Adventure"],
+        "watch_url": "https://www.netflix.com/title/81234567"
+    },
+    {
+        "name": "The Life List",
+        "id": "the-life-list",
+        "img_url": "/images/lifelist.jpg",
+        "genre": ["Romantic Comedy", "Drama"],
+        "watch_url": "https://www.netflix.com/title/81234568"
+    }
+]
+  
