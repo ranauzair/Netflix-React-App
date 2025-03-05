@@ -1,12 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
-import moviesData from "../../api/moviesData.json";
 import MovieCard from "../MovieCard";
 
 const MovieCarousel = () => {
+  const [movies, setMovies] = useState([]);
   const sliderRef = useRef(null);
   const [hasPrev, setHasPrev] = useState(false);
   const [hasNext, setHasNext] = useState(true);
-  const [filteredMovies, setFilteredMovies] = useState(moviesData);
+
+  useEffect(() => {
+    fetchMovies("All");
+  }, []);
 
   useEffect(() => {
     updateArrows();
@@ -18,7 +21,23 @@ const MovieCarousel = () => {
         sliderRef.current.removeEventListener("scroll", updateArrows);
       }
     };
-  }, []);
+  }, [movies]);
+
+  const fetchMovies = async (genre) => {
+    try {
+      const query = genre === "All" ? "movie" : genre.toLowerCase();
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=${query}&type=movie&apikey=${process.env.REACT_APP_OMDB_API_KEY}`
+      );
+      const data = await response.json();
+      if (data.Search) {
+        setMovies(data.Search);
+        setTimeout(updateArrows, 0);
+      }
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
 
   const scrollLeft = () => {
     if (sliderRef.current) {
@@ -42,24 +61,16 @@ const MovieCarousel = () => {
     }
   };
 
-  const filterMovies = (genre) => {
-    if (genre === "All") {
-      setFilteredMovies(moviesData);
-    } else {
-      setFilteredMovies(moviesData.filter((movie) => movie.genre.includes(genre)));
-    }
-  };
-
   return (
     <div className="relative w-screen mx-auto mt-24">
       <div className="flex gap-4 mb-4">
-        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => filterMovies("All")}>
+        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => fetchMovies("All")}>
           All
         </button>
-        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => filterMovies("Action")}>
+        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => fetchMovies("Action")}>
           Action
         </button>
-        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => filterMovies("Drama")}>
+        <button className="p-2 bg-gray-500 text-white rounded" onClick={() => fetchMovies("Drama")}>
           Drama
         </button>
       </div>
@@ -87,8 +98,8 @@ const MovieCarousel = () => {
           className="flex gap-4 overflow-hidden px-12"
           style={{ scrollBehavior: "smooth", whiteSpace: "nowrap" }}
         >
-          {filteredMovies.map((movie) => (
-            <MovieCard key={movie.id} data={movie} />
+          {movies.map((movie) => (
+            <MovieCard key={movie.imdbID} data={movie} />
           ))}
         </div>
       </div>

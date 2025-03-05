@@ -5,22 +5,28 @@ const MovieCard = ({ data }) => {
   if (!data) return null;
 
   const {
-    img_url = "",
-    name = "Unknown",
-    description = "No description available.",
-    genre = [],
-    watch_url = "#",
+    Poster = "",
+    Title = "Unknown",
+    Year = "N/A",
+    imdbID,
   } = data;
 
   return (
-    <li className={styles.card}>
-      <a href={watch_url} target="_blank" rel="noopener noreferrer">
-        <img src={img_url} alt={name} className="cursor-pointer" />
+    <li className={`${styles.card} w-[200px] h-[300px] flex-shrink-0 rounded-lg overflow-hidden shadow-lg bg-gray-900`}>
+      <a
+        href={`https://www.imdb.com/title/${imdbID}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src={Poster !== "N/A" ? Poster : "/images/placeholder.png"}
+          alt={Title}
+          className="w-full h-full object-cover cursor-pointer"
+        />
       </a>
-      <div className="flex flex-col gap-6 py-[3.2rem] px-[1.2rem]">
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <p>Genre: {genre.length > 0 ? genre.join(", ") : "N/A"}</p>
+      <div className="p-2 text-white text-center">
+        <h2 className="text-sm font-semibold">{Title}</h2>
+        <p className="text-xs">Year: {Year}</p>
       </div>
     </li>
   );
